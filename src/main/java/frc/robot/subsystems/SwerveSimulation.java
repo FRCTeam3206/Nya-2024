@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.AutoConstants;
 
 public class SwerveSimulation extends SubsystemBase{
-    private Pose2d pose=new Pose2d(2.0433433724010306,4.709550419100839,new Rotation2d());
+    private Pose2d pose=new Pose2d();
     private ChassisSpeeds speeds=new ChassisSpeeds();
     Field2d simField2d=new Field2d();
     public SwerveSimulation(){

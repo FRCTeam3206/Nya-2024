@@ -1,6 +1,12 @@
 {
   "version": 1.0,
-  "startingPose": null,
+  "startingPose": {
+    "position": {
+      "x": 1.7063036693833724,
+      "y": 4.3912158580379925
+    },
+    "rotation": 0
+  },
   "command": {
     "type": "sequential",
     "data": {
@@ -9,12 +15,6 @@
           "type": "path",
           "data": {
             "pathName": "Get Cube"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Grab Cube"
           }
         },
         {
