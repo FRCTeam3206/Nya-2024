@@ -16,6 +16,7 @@ import edu.wpi.first.math.trajectory.Trajectory;
 import edu.wpi.first.math.trajectory.TrajectoryConfig;
 import edu.wpi.first.math.trajectory.TrajectoryGenerator;
 import edu.wpi.first.wpilibj.PS4Controller.Button;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
@@ -29,6 +30,8 @@ import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.SwerveSimulation;
+
 import java.util.List;
 
 /*
@@ -47,15 +50,24 @@ public class RobotContainer {
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the button bindings
+    SmartDashboard.putBoolean("Cube Grabbed", false);
     NamedCommands.registerCommand(
         "Grab Cube",
         new SequentialCommandGroup(
+            new WaitCommand(2),
             new InstantCommand(
                 () -> {
-                  System.out.println("Grabbing Cube");
+                  SmartDashboard.putBoolean("Cube Grabbed", true);
                 },
-                m_robotDrive),
-            new WaitCommand(2)));
+                m_robotDrive)));
+    
+    //ONLY USE IN SIM
+    if(Robot.simulation){
+        System.out.println("Simulating in RobotContainer.java");
+        SwerveSimulation swerveSim=new SwerveSimulation();
+    }else{
+        System.out.println("Not Simulating");
+    }
     AutoBuilder.buildAutoChooser();
     configureButtonBindings();
 

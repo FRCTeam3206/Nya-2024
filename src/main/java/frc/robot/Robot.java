@@ -19,7 +19,7 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
   private RobotContainer m_robotContainer;
-
+  public static boolean simulation=true;
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -39,6 +39,9 @@ public class Robot extends TimedRobot {
    * SmartDashboard integrated updating.
    */
   public void simulationInit(){
+    
+    simulation=true;
+    System.out.println("Sim Init "+simulation);
     //Silences joystick errors when running simulation
     DriverStation.silenceJoystickConnectionWarning(true);
   }

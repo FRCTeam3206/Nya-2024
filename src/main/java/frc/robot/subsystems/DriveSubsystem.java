@@ -20,6 +20,7 @@ import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Robot;
 import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.DriveConstants;
 import frc.utils.SwerveUtils;
@@ -79,7 +80,9 @@ public class DriveSubsystem extends SubsystemBase {
   /** Creates a new DriveSubsystem. */
   public DriveSubsystem() {
     SmartDashboard.putData("Field", m_field);
-    AutoBuilder.configureHolonomic(this::getPose, this::resetOdometry, this::getSpeeds, (ChassisSpeeds speeds)->{drive(speeds.vxMetersPerSecond, speeds.vyMetersPerSecond, speeds.omegaRadiansPerSecond, true, false);}, AutoConstants.pathFollowerConfig, this);
+    if(!Robot.simulation){
+      AutoBuilder.configureHolonomic(this::getPose, this::resetOdometry, this::getSpeeds, (ChassisSpeeds speeds)->{drive(speeds.vxMetersPerSecond, speeds.vyMetersPerSecond, speeds.omegaRadiansPerSecond, true, false);}, AutoConstants.pathFollowerConfig, this);
+    }
   }
 
   @Override
