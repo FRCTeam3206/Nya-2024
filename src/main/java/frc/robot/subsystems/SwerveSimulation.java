@@ -16,10 +16,10 @@ public class SwerveSimulation extends SubsystemBase{
     private Pose2d pose=new Pose2d();
     private ChassisSpeeds speeds=new ChassisSpeeds();
     Field2d simField2d=new Field2d();
-    double rateLimit=3.0;
+    double rateLimit=4.0;
     SlewRateLimiter xLim=new SlewRateLimiter(rateLimit);
     SlewRateLimiter yLim=new SlewRateLimiter(rateLimit);
-    SlewRateLimiter tLim=new SlewRateLimiter(rateLimit);
+    SlewRateLimiter tLim=new SlewRateLimiter(6.0);
     public SwerveSimulation(){
         System.out.println("Simulating Swerve");
         SmartDashboard.putData("Simulated Field", simField2d);

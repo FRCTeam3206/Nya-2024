@@ -18,6 +18,12 @@
           }
         },
         {
+          "type": "named",
+          "data": {
+            "name": "Grab Cube"
+          }
+        },
+        {
           "type": "path",
           "data": {
             "pathName": "To Charge"
